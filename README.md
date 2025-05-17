@@ -34,7 +34,7 @@ This repository demonstrates a complete machine-learning pipeline for predicting
 
 ```
 ├── CRYOANALYSIS.csv           # Raw clinical dataset (upload separately)
-├── notebook.ipynb             # Main analysis notebook
+├── Figure2mod.ipynb           # Main analysis notebook
 └── README.md                  # This file
 ```
 
@@ -81,21 +81,40 @@ pip install -q --upgrade xgboost
    ```bash
    jupyter lab
    ```
-5. **Open** `notebook.ipynb` and run cells in order:
+5. **Open** `Figure2mod.ipynb` and run cells in order:
 
-   * **Cell 0**: install missing packages (Colab only)
-   * **Cell 1**: imports & global config
-   * **Cell 2**: load & prepare data
-   * **Cell 3**: train/test split (random and temporal)
-   * **Cell 4a–4d**: preprocessing pipelines & feature inspection
-   * **Cell 4.5–4.9**: hyperparameter tuning for XGBoost, ExtraTrees, HistGB, CatBoost, AdaBoost
-   * **Cell 5**: assemble final models dictionary
-   * **Cell 6**: evaluate ROC (ShuffleSplit)
-   * **Cell 7b**: bootstrap AUC 95% CI
-   * **Cell 9.5–10**: calibration curves & Brier scores
-   * **Cell 10**: SHAP plots for XGBoost & CatBoost
-   * **Cell 14**: partial dependence plots
-   * **Cell 16**: decision curve analysis (if library installed)
+   * **Cell 0** – install packages (Colab only)
+   * **Cell 1** – import libraries and set options
+   * **Cell 2** – load the dataset and build feature lists
+   * **Cell 3** – create train/test splits
+   * **Cell 4** – build the preprocessing pipeline
+   * **Cell 4b** – preview numeric imputation
+   * **Cell 4c** – preview categorical imputation
+   * **Cell 4d** – inspect the preprocessed feature matrix
+   * **Cell 4.4** – helper for CatBoost categorical handling
+   * **Cell 4.5** – tune XGBoost rounds with native CV
+   * **Cell 4.6** – grid search ExtraTrees
+   * **Cell 4.8** – random search HistGradientBoosting
+   * **Cell 5** – assemble the models dictionary
+   * **Cell 5.1** – quick CatBoost search
+   * **Cell 5.2** – tune AdaBoost parameters
+   * **Cell 5.3** – final XGBoost with early stopping
+   * **Cell 6** – evaluate ROC via ShuffleSplit
+   * **Cell 7** – plot the combined ROC figure
+   * **Cell 7b** – bootstrap AUC 95% CI
+   * **Cell 8** – bar chart of mean AUCs
+   * **Cell 9** – summary table of AUCs
+   * **Cell 9.5** – apply sigmoid calibration
+   * **Cell 10** – calibration curve and Brier score
+   * **Cell 11a** – precision–recall and threshold tuning
+   * **Cell 11b** – SHAP summary for XGBoost
+   * **Cell 12** – partial dependence plots
+   * **Cell 13** – permutation importance
+   * **Cell 14** – decision curve analysis
+   * **Cell 15** – SHAP summary for CatBoost
+   * **Cell 16** – partial dependence for CatBoost
+   * **Cell 17** – permutation importance for CatBoost
+   * **Cell 18** – decision curve for CatBoost
 6. **Inspect** the output plots and metrics. Customize hyperparameters or split strategies as needed.
 
 ## Notes & Tips
